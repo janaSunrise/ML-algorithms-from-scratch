@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 from .base import BaseRegression
 
 
-
 class LogisticRegression(BaseRegression):
     @staticmethod
     def _get_linear_model(X, w, b):
@@ -25,7 +24,8 @@ class LogisticRegression(BaseRegression):
 
         return self._sigmoid(linear_model)
 
-    def _sigmoid(self, x):
+    @staticmethod
+    def _sigmoid(x):
         return 1 / (np.exp(-x) + 1)
 
 

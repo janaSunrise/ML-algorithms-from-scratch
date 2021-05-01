@@ -14,13 +14,13 @@ class LinearRegression(BaseRegression):
 
 
 def mean_squared_error(y_true, y_pred):
-    return np.mean((y_true - y_pred)**2)
+    return np.mean((y_true - y_pred) ** 2)
 
 
 def r2_score(y_true, y_pred):
     corr_matrix = np.corrcoef(y_true, y_pred)
     corr = corr_matrix[0, 1]
-    return corr**2
+    return corr ** 2
 
 
 # Testing
@@ -33,7 +33,7 @@ if __name__ == "__main__":
     regressor = LinearRegression(learning_rate=0.01, n_iters=1000)
     regressor.fit(X_train, y_train)
     predictions = regressor.predict(X_test)
-    
+
     # Print the MSE
     mse = mean_squared_error(y_test, predictions)
     print(f"Mean squared error: {mse}")
