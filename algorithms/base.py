@@ -1,8 +1,20 @@
 """This file contains the abstract implementation of further algorithms."""
+import abc
+
 import numpy as np
 
 
-class BaseRegression:
+class BaseAlgorithm(metaclass=abc.ABCMeta):
+    @abc.abstractmethod
+    def fit(self, X, y):
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def predict(self, X):
+        raise NotImplementedError
+
+
+class BaseRegression(BaseAlgorithm):
     def __init__(self, learning_rate: float = 0.001, n_iters: int = 1000):
         # Assign the variables
         self.learning_rate = learning_rate
