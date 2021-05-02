@@ -81,6 +81,7 @@ class Adaboost(BaseAlgorithm):
         return y_pred
 
 
+# Testing
 if __name__ == "__main__":
     data = datasets.load_breast_cancer()
     X, y = data.data, data.target
