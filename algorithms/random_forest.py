@@ -14,6 +14,24 @@ class RandomForest(BaseAlgorithm):
         self.n_features = n_features
         self.trees = []
 
+    def fit(self, X, y):
+        self.trees = []
+
+        for _ in range(self.n_trees):
+            tree = DecisionTree(
+                min_samples_split=self.min_samples_split, max_depth=self.max_depth, n_features=self.n_features
+            )
+            X_samp, y_samp = bootstrap_sample(X, y)
+            tree.fit(X_samp, y_samp)
+
+            self.trees.append(tree)
+
+    def predict(self, X):
+        tree_preds = np.array([tree.predict(X) for tree in self.trees])
+        tree_preds = np.swapaxes(tree_preds, 0, 1)
+        y_pred = [most_common_label(tree_pred) for tree_pred in tree_preds]
+        return np.array(y_pred)
+
 
 def bootstrap_sample(X, y):
     n_samples = X.shape[0]
