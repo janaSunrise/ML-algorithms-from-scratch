@@ -9,6 +9,7 @@
 - Linear regression (`linear_regression`)
 - Logistic regression (`logistic_regression`)
 - Decision Trees (`decision_tree`)
+- Adaboost (`adaboost`)
 
 ## Installation and usage.
 
