@@ -10,6 +10,7 @@
 - Logistic regression (`logistic_regression`)
 - Decision Trees (`decision_tree`)
 - Adaboost (`adaboost`)
+- Random forest (`random_forest`)
 
 ## Installation and usage.
 
