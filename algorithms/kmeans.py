@@ -1,5 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn import datasets
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.model_selection import train_test_split
 
 
 class KMeans:
@@ -94,4 +97,10 @@ class KMeans:
 
 # Testing
 if __name__ == "__main__":
-    pass
+    X, y = datasets.make_blobs(centers=3, n_samples=500, n_features=2, shuffle=True, random_state=42)
+    clusters = len(np.unique(y))
+
+    k = KMeans(K=clusters, max_iters=150, plot_steps=False)
+    y_pred = k.predict(X)
+
+    k.plot()

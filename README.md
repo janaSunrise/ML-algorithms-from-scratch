@@ -13,6 +13,7 @@
 - Random forest (`random_forest`)
 - Naive Bayes (`naive_bayes`)
 - KNN (`knn`)
+- KMeans (`kmeans`)
 
 ## Installation and usage.
 
