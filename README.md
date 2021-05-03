@@ -11,6 +11,8 @@
 - Decision Trees (`decision_tree`)
 - Adaboost (`adaboost`)
 - Random forest (`random_forest`)
+- Naive Bayes (`naive_bayes`)
+- KNN (`knn`)
 
 ## Installation and usage.
 
