@@ -14,6 +14,7 @@
 - Naive Bayes (`naive_bayes`)
 - KNN (`knn`)
 - KMeans (`kmeans`)
+- PCA [Principal component analysis] (`pca`)
 
 ## Installation and usage.
 
