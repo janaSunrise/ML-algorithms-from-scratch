@@ -2,15 +2,35 @@ import numpy as np
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 
-from .base import BaseRegression
+from .base import BaseAlgorithm
 
 
-class LinearRegression(BaseRegression):
-    def _approximation(self, X, w, b):
-        return np.dot(X, w) + b
+class LinearRegression(BaseAlgorithm):
+    def __init__(self, learning_rate: float = 0.001, n_iters: int = 1000):
+        # Assign the variables
+        self.learning_rate = learning_rate
+        self.n_iters = n_iters
 
-    def _predict(self, X, w, b):
-        return np.dot(X, w) + b
+        # Weights and bias
+        self.weights, self.bias = None, None
+
+    def fit(self, X, y):
+        n_samples, n_features = X.shape
+
+        self.weights, self.bias = np.zeros(n_features), 0
+
+        # Minimizing loss, and finding the correct Weights and biases using Gradient Descent
+        for _ in range(self.n_iters):
+            y_predicted = np.dot(X, self.weights) + self.bias
+
+            dw = (1 / n_samples) * np.dot(X.T, (y_predicted - y))
+            db = (1 / n_samples) * np.sum(y_predicted - y)
+
+            self.weights -= self.learning_rate * dw
+            self.bias -= self.learning_rate * db
+
+    def predict(self, X):
+        return np.dot(X, self.weights) + self.bias
 
 
 def mean_squared_error(y_true, y_pred):

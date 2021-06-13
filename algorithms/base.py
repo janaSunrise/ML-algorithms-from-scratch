@@ -1,4 +1,3 @@
-"""This file contains the abstract implementation of further algorithms."""
 import abc
 
 import numpy as np

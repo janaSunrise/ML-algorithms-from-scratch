@@ -3,26 +3,41 @@ from sklearn import datasets
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
 
-from .base import BaseRegression
+from .base import BaseAlgorithm
 
 
-class LogisticRegression(BaseRegression):
-    @staticmethod
-    def _get_linear_model(X, w, b):
-        return np.dot(X, w) + b
+class LogisticRegression(BaseAlgorithm):
+    def __init__(self, learning_rate: float = 0.001, n_iters: int = 1000):
+        # Assign the variables
+        self.learning_rate = learning_rate
+        self.n_iters = n_iters
 
-    def _predict(self, X, w, b):
-        linear_model = self._get_linear_model(X, w, b)
+        # Weights and bias
+        self.weights, self.bias = None, None
+
+    def fit(self, X, y):
+        n_samples, n_features = X.shape
+
+        self.weights, self.bias = np.zeros(n_features), 0
+
+        # Minimizing loss, and finding the correct Weights and biases using Gradient Descent
+        for _ in range(self.n_iters):
+            linear_model = np.dot(X, self.weights) + self.bias
+            y_predicted = self._sigmoid(linear_model)
+
+            dw = (1 / n_samples) * np.dot(X.T, (y_predicted - y))
+            db = (1 / n_samples) * np.sum(y_predicted - y)
+
+            self.weights -= self.learning_rate * dw
+            self.bias -= self.learning_rate * db
+
+    def predict(self, X):
+        linear_model = np.dot(X, self.weights) + self.bias
 
         y_predicted = self._sigmoid(linear_model)
         y_predicted_cls = [1 if i > 0.5 else 0 for i in y_predicted]
 
         return np.array(y_predicted_cls)
-
-    def _approximation(self, X, w, b):
-        linear_model = self._get_linear_model(X, w, b)
-
-        return self._sigmoid(linear_model)
 
     @staticmethod
     def _sigmoid(x):
