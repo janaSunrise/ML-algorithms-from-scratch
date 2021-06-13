@@ -15,6 +15,7 @@
 - KNN (`knn`)
 - KMeans (`kmeans`)
 - PCA [Principal component analysis] (`pca`)
+- SVM (`svm`)
 
 ## Installation and usage.
 
