@@ -19,6 +19,12 @@
 
 ## Installation and usage.
 
+This project has 4 dependencies.
+
+- `numpy` for the maths implementation and writing the algorithms
+- `Scikit-learn` for the data generation and testing.
+- `Matplotlib` for the plotting.
+
 This project uses `pipenv` for dependency management. You need to ensure that you have `pipenv`
 installed on your system.
 
@@ -47,5 +53,5 @@ We love people's support in growing and improving. Be sure to leave a ⭐️ if 
 also be sure to contribute, if you're interested!
 
 <div align="center">
-Made by Sunrit Jana with <3
+Made by Sunrit Jana with ❤️
 </div>
