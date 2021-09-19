@@ -2,7 +2,7 @@
 
 > A python only implementation of the Algorithms used for ML from scratch.
 
-**Note**: This project does use external dependencies for the testing of the algorithms.
+**Note**: This project uses external dependencies for the testing of the algorithms.
 
 ### Available algorithms
 
